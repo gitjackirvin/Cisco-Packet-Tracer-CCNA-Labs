@@ -1,1 +1,26 @@
+Step 1: Hostname configuration to R1
 
+Router>
+Router>en
+Router#config t
+Router(config)#hostname R1
+R1(config)#exit
+R1#
+
+Step 2: Unencrypted password of 'CCNA' setup
+
+Step 3: User EXEC mode password testing
+
+Step 4: View password in running config
+
+Step 5: Ensure password encryption
+
+Step 6: View password in running config
+
+Step 7: Configure encrypted enable password of 'Cisco'
+
+Step 8: User EXEC mode and privileged EXEC mode password testing
+
+Step 9: View passwords in running configuration
+
+Step 10: Save running configuration to startup configuration
