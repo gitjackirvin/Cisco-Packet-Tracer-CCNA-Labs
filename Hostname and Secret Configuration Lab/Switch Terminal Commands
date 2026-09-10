@@ -1,5 +1,4 @@
 Step 1: Hostname configuration to SW1
-
 Switch>
 Switch>en
 Switch#config t
@@ -8,19 +7,53 @@ SW1(config)#exit
 SW1#
 
 Step 2: Unencrypted password of 'CCNA' setup
+SW1#
+SW1# config t
+SW1(config)# enable password CCNA
+SW1(config)#exit
 
 Step 3: User EXEC mode password testing
+SW1#
+SW1#exit
+SW1>
+SW1>en
+Password: CCNA
+SW1#
 
 Step 4: View password in running config
+SW1#show running-config
+enable password CCNA
 
 Step 5: Ensure password encryption
+SW1#
+SW1# conf t
+SW1(config)#service-password-encryption
+SW1(config)#exit
 
 Step 6: View password in running config
+SW1#show running-config
+enable password 7 08026F6028
 
 Step 7: Configure encrypted enable password of 'Cisco'
+SW1# conf t
+SW1(config)#enable secret Cisco
+SW1(config)#exit
 
 Step 8: User EXEC mode and privileged EXEC mode password testing
+SW1#exit
+SW1>
+SW1>en
+Password: Cisco
+SW1#
 
 Step 9: View passwords in running configuration
+SW1#show running-config
+enable secret 5 $1$mERr$YlCkLMcTYWwkF1Ccndtll.
+enable password 7 08026F6028
 
 Step 10: Save running configuration to startup configuration
+SW1#copy running-config startup-config
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+SW1#
