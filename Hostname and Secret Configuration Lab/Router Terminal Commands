@@ -1,5 +1,4 @@
 Step 1: Hostname configuration to R1
-
 Router>
 Router>en
 Router#config t
@@ -8,19 +7,53 @@ R1(config)#exit
 R1#
 
 Step 2: Unencrypted password of 'CCNA' setup
+R1#
+R1#config t
+R1(config)#enable password CCNA
+R1(config)#exit
 
 Step 3: User EXEC mode password testing
+R1#
+R1#exit
+R1>
+R1>en
+Password: CCNA
+R1#
 
 Step 4: View password in running config
+R1#show running-config
+enable password CCNA
 
 Step 5: Ensure password encryption
+R1#
+R1#conf t
+R1(config)#service password-encryption
+R1(config)#exit
 
 Step 6: View password in running config
+R1#show running-config
+enable password 7 08026F6028
 
 Step 7: Configure encrypted enable password of 'Cisco'
+R1# conf t
+R1(config)#enable secret Cisco
+R1(config)#exit
 
 Step 8: User EXEC mode and privileged EXEC mode password testing
+R1#exit
+R1>
+R1>en
+Password: Cisco
+R1#
 
 Step 9: View passwords in running configuration
+R1#show running-config
+enable secret 5 $1$mERr$YlCkLMcTYWwkF1Ccndtll.
+enable password 7 08026F6028
 
 Step 10: Save running configuration to startup configuration
+R1#copy running-config startup-config
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+R1#
