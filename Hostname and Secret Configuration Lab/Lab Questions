@@ -3,5 +3,6 @@
 - I have to use the password Cisco because it was configured with a stronger encryption than the password CCNA and therefore is more secure. 
 2. View the passwords in the running configuration.
      What encryption type number is used for the encrypted 'enable password'?
-
+- A basic substitution cipher called the Vigenère Cipher was used for enable password. It is encryption type number 7 and is public knowledge and considered insecure.
      What encryption type number is used for the encrypted 'enable secret'?
+- The hashing algorithm MD5 is used for enable secret making it more secure ocmpared to the enable password encryption type which is public knowledge. The encryption number is 5.
