@@ -1,14 +1,14 @@
 Step 1: Hostname configuration to R1
 Router>
 Router>en
-Router#config t
+Router#conf t
 Router(config)#hostname R1
 R1(config)#exit
 R1#
 
 Step 2: Unencrypted password of 'CCNA' setup
 R1#
-R1#config t
+R1#conf t
 R1(config)#enable password CCNA
 R1(config)#exit
 
