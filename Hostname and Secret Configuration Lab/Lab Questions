@@ -1,0 +1,7 @@
+1. Exit back to user EXEC mode and then return to privileged EXEC mode.
+    Which password do you have to use?
+- I have to use the password Cisco because it was configured with a stronger encryption than the password CCNA and therefore is more secure. 
+2. View the passwords in the running configuration.
+     What encryption type number is used for the encrypted 'enable password'?
+
+     What encryption type number is used for the encrypted 'enable secret'?
