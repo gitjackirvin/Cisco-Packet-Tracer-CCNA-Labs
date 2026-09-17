@@ -1,0 +1,35 @@
+Pools: LAN1, LAN2, LAN3
+Hosts per LAN: 3
+Default Gateway LAN 1: 192.168.0.254
+Default Gateway LAN 2: 192.168.1.254
+Default Gateway LAN 3: 192.168.2.254
+DNS Server: 8.8.8.8
+IP Range: 192.168.*.1-192.168.*.254
+Occupied Hosts: 192.168.*.1 = DHCP Server and 192.168.*.254 = Router Interface
+Acceptable IP Range: 192.168.*.2-192.168.*.253
+Selected Range: 192.168.*.2-192.168.*.5
+Hosts per Pool: 3
+
+Pool 1:
+Name: LAN1
+Default Gateway: 192.168.0.254
+DNS Server: 8.8.8.8
+Start IP Address: 192.168.0.2
+Subnet Mask: 255.255.255.0
+Maximum Number of Users: 3
+
+Pool 2:
+Name: LAN2
+Default Gateway: 192.168.1.254
+DNS Server: 8.8.8.8
+Start IP Address: 192.168.1.2
+Subnet Mask: 255.255.255.0
+Maximum Number of Users: 3
+
+Pool 3:
+Name: LAN3
+Default Gateway: 192.168.2.254
+DNS Server: 8.8.8.8
+Start IP Address: 192.168.2.2
+Subnet Mask: 255.255.255.0
+Maximum Number of Users: 3
