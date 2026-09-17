@@ -1,15 +1,27 @@
+# IP helper allows subnets to communicate with the DHCP server on subnet 1 and recieve an IP address
+[Configuration for Subnet 1's 192.168.0.0 /24 interface]
+
 Router>
 Router>en
 Router#conf t
 Router(config)#int G0/0
 Router(config-if)#ip address 192.168.0.254 255.255.255.0
+Router(config-if)#ip helper-address 192.168.0.1
 Router(config-if)#no shutdown
 Router(config-if)#exit
+
+[Configuration for Subnet 2's 192.168.1.0 /24 interface]
+
 Router(config)#int G0/1
 Router(config-if)#ip address 192.168.1.254 255.255.255.0
+Router(config-if)#ip helper-address 192.168.0.1
 Router(config-if)#no shutdown
 Router(config-if)#exit
+
+[Configuration for Subnet 3's 192.168.2.0 /24 interface]
+
 Router(config)#int G0/2
 Router(config-if)#ip address 192.168.2.254 255.255.255.0
+Router(config-if)#ip helper-address 192.168.0.1
 Router(config-if)#no shutdown
 Router(config-if)#exit
