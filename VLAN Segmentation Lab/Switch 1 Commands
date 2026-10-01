@@ -1,0 +1,27 @@
+// VLAN 10 Creation
+Switch>
+Switch>en
+Switch#conf t
+Switch(config)#int range fastEthernet 0/1-3
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 10
+Switch(config-if-range)#exit
+
+// VLAN 20 Creation
+Switch>
+Switch>en
+Switch#conf t
+Switch(config)#int range fastEthernet 0/4-6
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 20
+Switch(config-if-range)#exit
+
+// Trunk Port Configuration
+Switch>
+Switch>en
+Switch#conf t
+Switch(config)#interface g0/1
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#switchport trunk allowed vlan 10,20
+Switch(config-if)#no shutdown
+Switch(config-if)#exit
