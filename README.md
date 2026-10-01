@@ -5,3 +5,4 @@ Here is what I have created:
 - A three LAN network, with nine hosts all receiving IPs from a DHCP server.
 - A hostname and secret configuration lab, where I configured secrets on switches and routers.
 - A cable type lab, where I connected local and distance devices with fiber and copper cabling.
+- A VLAN Segmentation lab, with four LAN's that I segmented using subinterfaces
