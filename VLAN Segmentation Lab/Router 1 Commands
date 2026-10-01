@@ -1,0 +1,28 @@
+// Router to Router Link Setup
+Router>
+Router>en
+Router#conf t
+Router(config)#int g0/2
+Router(config-if)#ip address 10.10.10.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+
+// VLAN 10 Subinterface
+Router>
+Router>en
+Router#conf t
+Router(config)#int g0/1.10
+Router(config-subif)#encapsulation dot1Q 10
+Router(config-subif)#ip address 192.168.10.254 255.255.255.0
+Router(config-subif)#no shutdown
+Router(config-subif)#exit
+
+// VLAN 20 Subinterface
+Router>
+Router>en
+Router#conf t
+Router(config)#int g0/1.20
+Router(config-subif)#encapsulation dot1Q 20
+Router(config-subif)#ip address 192.168.20.254 255.255.255.0
+Router(config-subif)#no shutdown
+Router(config-subif)#exit
