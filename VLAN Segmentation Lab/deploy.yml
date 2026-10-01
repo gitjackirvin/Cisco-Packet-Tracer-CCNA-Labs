@@ -1,0 +1,134 @@
+---
+- name: Configure Router0
+  hosts: Router0
+  gather_facts: false
+
+  tasks:
+
+    - name: Configure Router0 G0/1
+      cisco.ios.ios_config:
+        parents:
+          - interface GigabitEthernet0/1
+        lines:
+          - no shutdown
+
+    - name: Configure Router0 VLAN 10
+      cisco.ios.ios_config:
+        parents:
+          - interface GigabitEthernet0/1.10
+        lines:
+          - encapsulation dot1Q 10
+          - ip address 192.168.10.254 255.255.255.0
+
+    - name: Configure Router0 VLAN 20
+      cisco.ios.ios_config:
+        parents:
+          - interface GigabitEthernet0/1.20
+        lines:
+          - encapsulation dot1Q 20
+          - ip address 192.168.20.254 255.255.255.0
+
+    - name: Configure Router0 point-to-point link
+      cisco.ios.ios_config:
+        parents:
+          - interface GigabitEthernet0/2
+        lines:
+          - ip address 10.10.10.1 255.255.255.252
+          - no shutdown
+
+
+- name: Configure Router1
+  hosts: Router1
+  gather_facts: false
+
+  tasks:
+
+    - name: Configure Router1 G0/1
+      cisco.ios.ios_config:
+        parents:
+          - interface GigabitEthernet0/1
+        lines:
+          - no shutdown
+
+    - name: Configure Router1 VLAN 30
+      cisco.ios.ios_config:
+        parents:
+          - interface GigabitEthernet0/1.30
+        lines:
+          - encapsulation dot1Q 30
+          - ip address 172.168.10.254 255.255.255.0
+
+    - name: Configure Router1 VLAN 40
+      cisco.ios.ios_config:
+        parents:
+          - interface GigabitEthernet0/1.40
+        lines:
+          - encapsulation dot1Q 40
+          - ip address 172.168.20.254 255.255.255.0
+
+    - name: Configure Router1 point-to-point link
+      cisco.ios.ios_config:
+        parents:
+          - interface GigabitEthernet0/2
+        lines:
+          - ip address 10.10.10.2 255.255.255.252
+          - no shutdown
+
+- name: Configure Switch0
+  hosts: Switch0
+  gather_facts: false
+
+  tasks:
+
+    - name: Create VLAN 10
+      cisco.ios.ios_vlans:
+        config:
+          - name: FINANCE
+            vlan_id: 10
+        state: merged
+
+    - name: Create VLAN 20
+      cisco.ios.ios_vlans:
+        config:
+          - name: RESEARCH
+            vlan_id: 20
+        state: merged
+
+    - name: Configure trunk to Router0
+      cisco.ios.ios_config:
+        parents:
+          - interface GigabitEthernet0/1
+        lines:
+          - switchport mode trunk
+          - switchport trunk allowed vlan 10,20
+          - no shutdown
+
+
+- name: Configure Switch1
+  hosts: Switch1
+  gather_facts: false
+
+  tasks:
+
+    - name: Create VLAN 30
+      cisco.ios.ios_vlans:
+        config:
+          - name: MARKETING
+            vlan_id: 30
+        state: merged
+
+    - name: Create VLAN 40
+      cisco.ios.ios_vlans:
+        config:
+          - name: HR
+            vlan_id: 40
+        state: merged
+
+    - name: Configure trunk to Router1
+      cisco.ios.ios_config:
+        parents:
+          - interface GigabitEthernet0/1
+        lines:
+          - switchport mode trunk
+          - switchport trunk allowed vlan 30,40
+          - no shutdown
